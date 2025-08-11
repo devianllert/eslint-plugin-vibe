@@ -31,20 +31,18 @@ writeFileSync(
     {
       name: packageJSON.name,
       description:
-        "Validate that your components can safely be updated with Fast Refresh",
+        "Project-specific linting rules for ESLint",
       version: packageJSON.version,
       type: "commonjs",
-      author: "Arnaud Barré (https://github.com/ArnaudBarre)",
+      author: "devianllert (https://github.com/devianllert)",
       license: packageJSON.license,
-      repository: "github:ArnaudBarre/eslint-plugin-react-refresh",
+      repository: "github:devianllert/eslint-plugin-vibe",
       main: "index.js",
       types: "index.d.ts",
       keywords: [
         "eslint",
         "eslint-plugin",
         "react",
-        "react-refresh",
-        "fast refresh",
       ],
       peerDependencies: packageJSON.peerDependencies,
     },

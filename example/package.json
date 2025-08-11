@@ -11,10 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "@types/react": "^19.1.4",
-    "eslint-custom-rules": "file:../dist",
+    "eslint-plugin-vibe": "file:../dist",
     "react": "^19.1.0"
   },
   "devDependencies": {
-    "eslint": "^9.26.0"
+    "eslint": "^9.26.0",
+    "typescript-eslint": "^8.36.0"
   }
 }

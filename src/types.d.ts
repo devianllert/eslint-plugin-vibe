@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type Config = {
-  plugins: { "eslint-custom-rules": { rules: Record<string, any> } };
+  plugins: { "eslint-plugin-vibe": { rules: Record<string, any> } };
   rules: Record<string, any>;
 };
 

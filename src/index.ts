@@ -1,16 +1,16 @@
-import { enforceExplicitProps } from "./enforce-explicit-types.ts";
+import { noObjectLiteralTypesForProps } from "./rules/no-object-literal-types.ts";
 
 export const rules = {
-  "enforce-explicit-types": enforceExplicitProps,
+  "no-object-literal-types": noObjectLiteralTypesForProps,
 };
 
 const plugin = { rules };
 
 export const configs = {
   recommended: {
-    name: "eslint-custom-rules/recommended",
-    plugins: { "eslint-custom-rules": plugin },
-    rules: { "eslint-custom-rules/enforce-explicit-types": "error" },
+    name: "eslint-plugin-vibe/recommended",
+    plugins: { "eslint-plugin-vibe": plugin },
+    rules: { "eslint-plugin-vibe/no-object-literal-types": "error" },
   },
 };
 

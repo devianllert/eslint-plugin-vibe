@@ -1,218 +1,99 @@
-# eslint-plugin-react-refresh [![npm](https://img.shields.io/npm/v/eslint-plugin-react-refresh)](https://www.npmjs.com/package/eslint-plugin-react-refresh)
+# `eslint-plugin-vibe` <sup>[![Version Badge][npm-version-svg]][package-url]</sup>
 
-Validate that your components can safely be updated with Fast Refresh.
-
-## Explainer
-
-"Fast Refresh", also known as "hot reloading", is a feature in many modern bundlers.
-If you update some React component(s) on disk, then the bundler will know to update only the impacted parts of your page -- without a full page reload.
-
-`eslint-plugin-react-refresh` enforces that your components are structured in a way that integrations such as [react-refresh](https://www.npmjs.com/package/react-refresh) expect.
-
-### Limitations
-
-⚠️ To avoid false positives, by default this plugin is only applied on `tsx` & `jsx` files. See [Options](#options) to run on JS files. ⚠️
-
-The plugin relies on naming conventions (i.e. use PascalCase for components, camelCase for util functions). This is why there are some limitations:
-
-- `export *` are not supported and will be reported as an error
-- Anonymous function are not supported (i.e `export default function() {}`)
-- Class components are not supported
-- All-uppercase function export is considered an error when not using direct named export (ex `const CMS = () => <></>; export { CMS }`)
+Project specific linting rules for `eslint`
 
 ## Installation
 
 ```sh
-npm i -D eslint-plugin-react-refresh
+npm install eslint eslint-plugin-vibe --save-dev
 ```
 
-## Usage
 
-This plugin provides a single rule, `react-refresh/only-export-components`. There are multiple ways to enable it.
+## Configuration (legacy: `.eslintrc*`) <a id="configuration"></a>
 
-### Recommended config
+ 
+Enable JSX support.
 
-```js
-import reactRefresh from "eslint-plugin-react-refresh";
+With `eslint` 2+
 
-export default [
-  /* Main config */
-  reactRefresh.configs.recommended,
-];
-```
-
-### Vite config
-
-This enables the `allowConstantExport` option which is supported by Vite React plugins.
-
-```js
-import reactRefresh from "eslint-plugin-react-refresh";
-
-export default [
-  /* Main config */
-  reactRefresh.configs.vite,
-];
-```
-
-### Without config
-
-```js
-import reactRefresh from "eslint-plugin-react-refresh";
-
-export default [
-  {
-    // in main config for TSX/JSX source files
-    plugins: {
-      "react-refresh": reactRefresh,
-    },
-    rules: {
-      "react-refresh/only-export-components": "error",
-    },
-  },
-];
-```
-
-### Legacy config
-
-```jsonc
+```json
 {
-  "plugins": ["react-refresh"],
-  "rules": {
-    "react-refresh/only-export-components": "error"
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
   }
 }
 ```
 
-## Examples
+## Configuration (new: `eslint.config.js`)
 
-These examples are from enabling `react-refresh/only-exports-components`.
+From [`v8.21.0`](https://github.com/eslint/eslint/releases/tag/v8.21.0), eslint announced a new config system.
+In the new system, `.eslintrc*` is no longer used. `eslint.config.js` would be the default config file name.
+In eslint `v8`, the legacy system (`.eslintrc*`) would still be supported, while in eslint `v9`, only the new system would be supported.
 
-### Fail
+And from [`v8.23.0`](https://github.com/eslint/eslint/releases/tag/v8.23.0), eslint CLI starts to look up `eslint.config.js`.
+**So, if your eslint is `>=8.23.0`, you're 100% ready to use the new config system.**
 
-```jsx
-export const foo = () => {};
-export const Bar = () => <></>;
+You might want to check out the official blog posts,
+
+- <https://eslint.org/blog/2022/08/new-config-system-part-1/>
+- <https://eslint.org/blog/2022/08/new-config-system-part-2/>
+- <https://eslint.org/blog/2022/08/new-config-system-part-3/>
+
+and the [official docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new).
+
+### Plugin
+
+The default export of `eslint-plugin-vibe` is a plugin object.
+
+```js
+const vibe = require('eslint-plugin-vibe');
+const globals = require('globals');
+
+module.exports = [
+  …
+  {
+    files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
+    plugins: {
+      vibe,
+    },
+    languageOptions: {
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+      globals: {
+        ...globals.browser,
+      },
+    },
+    rules: {
+      // ... any rules you want
+     },
+    // ... others are omitted for brevity
+  },
+  …
+];
 ```
 
-```jsx
-export default function () {}
-export default compose()(MainComponent)
-```
+## List of supported rules
 
-```jsx
-export * from "./foo";
-```
+<!-- begin auto-generated rules list -->
 
-```jsx
-const Tab = () => {};
-export const tabs = [<Tab />, <Tab />];
-```
+💼 [Configurations](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs) enabled in.\
+🚫 [Configurations](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs) disabled in.\
+🏃 Set in the `jsx-runtime` [configuration](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).\
+☑️ Set in the `recommended` [configuration](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).\
+🔧 Automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/user-guide/command-line-interface#--fix).\
+💡 Manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).\
+❌ Deprecated.
 
-```jsx
-const App = () => {};
-createRoot(document.getElementById("root")).render(<App />);
-```
+| Name                                                                                         | Description                                                                                                                                  | 💼 | 🚫 | 🔧 | 💡 | ❌  |
+| :------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------- | :- | :- | :- | :- | :- |
+| [no-object-literal-types](docs/rules/no-object-literal-types.md)                                     | Enforces creating an interface or type for props                                                                                                 |    |    |    |    |    |
+| 
 
-### Pass
+## License
 
-```jsx
-export default function Foo() {
-  return <></>;
-}
-```
-
-```jsx
-const foo = () => {};
-export const Bar = () => <></>;
-```
-
-```jsx
-import { App } from "./App";
-createRoot(document.getElementById("root")).render(<App />);
-```
-
-## Options
-
-These options are all present on `react-refresh/only-exports-components`.
-
-```ts
-interface Options {
-  allowExportNames?: string[];
-  allowConstantExport?: boolean;
-  customHOCs?: string[];
-  checkJS?: boolean;
-}
-
-const defaultOptions: Options = {
-  allowExportNames: [],
-  allowConstantExport: false,
-  customHOCs: [],
-  checkJS: false,
-};
-```
-
-### allowExportNames <small>(v0.4.4)</small>
-
-> Default: `[]`
-
-If you use a framework that handles HMR of some specific exports, you can use this option to avoid warning for them.
-
-Example for [Remix](https://remix.run/docs/en/main/discussion/hot-module-replacement#supported-exports):
-
-```json
-{
-  "react-refresh/only-export-components": [
-    "error",
-    { "allowExportNames": ["meta", "links", "headers", "loader", "action"] }
-  ]
-}
-```
-
-### allowConstantExport <small>(v0.4.0)</small>
-
-> Default: `false` (`true` in `vite` config)
-
-Don't warn when a constant (string, number, boolean, templateLiteral) is exported aside one or more components.
-
-This should be enabled if the fast refresh implementation correctly handles this case (HMR when the constant doesn't change, propagate update to importers when the constant changes.). Vite supports it, PR welcome if you notice other integrations works well.
-
-```json
-{
-  "react-refresh/only-export-components": [
-    "error",
-    { "allowConstantExport": true }
-  ]
-}
-```
-
-Enabling this option allows code such as the following:
-
-```jsx
-export const CONSTANT = 3;
-export const Foo = () => <></>;
-```
-
-### checkJS <small>(v0.3.3)</small>
-
-> Default: `false`
-
-If you're using JSX inside `.js` files (which I don't recommend because it forces you to configure every tool you use to switch the parser), you can still use the plugin by enabling this option. To reduce the number of false positive, only files importing `react` are checked.
-
-```json
-{
-  "react-refresh/only-export-components": ["error", { "checkJS": true }]
-}
-```
-
-### customHOCs <small>(v0.4.15)</small>
-
-If you're exporting a component wrapped in a custom HOC, you can use this option to avoid false positives.
-
-```json
-{
-  "react-refresh/only-export-components": [
-    "error",
-    { "customHOCs": ["observer", "withAuth"] }
-  ]
-}
-```
+`eslint-plugin-vibe` is licensed under the [MIT License](https://opensource.org/licenses/mit-license.php).
