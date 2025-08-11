@@ -4,6 +4,7 @@ import {
   TSESTree,
 } from "@typescript-eslint/utils";
 import { isReactComponent } from "../lib/react";
+import { findComponentDeclaration, getComponentName } from "../lib/node";
 
 const createRule = ESLintUtils.RuleCreator(
   (name) =>
@@ -26,6 +27,7 @@ export const noObjectLiteralTypesForProps = createRule<
         additionalProperties: false,
       },
     ],
+    fixable: "code",
     type: "problem",
     docs: {
       description: "No object literal type for props",
@@ -67,6 +69,24 @@ export const noObjectLiteralTypesForProps = createRule<
           context.report({
             node: param,
             messageId: "default",
+            fix(fixer) {
+              const componentName = getComponentName(node);
+              const declarationNode = findComponentDeclaration(node);
+              const interfaceName = `${componentName}Props`;
+              const objectLiteral = param.typeAnnotation?.typeAnnotation;
+              const interfaceBody = context.sourceCode.getText(objectLiteral);
+
+              const interfaceDeclaration = fixer.insertTextBefore(
+                declarationNode,
+                `interface ${interfaceName} ${interfaceBody}`,
+              );
+
+              return [
+                interfaceDeclaration,
+                fixer.insertTextAfterRange(interfaceDeclaration.range, "\n\n"),
+                fixer.replaceText(param, `props: ${interfaceName}`),
+              ];
+            },
           });
         }
       });
