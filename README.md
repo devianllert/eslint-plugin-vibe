@@ -1,4 +1,4 @@
-# `eslint-plugin-vibe` <sup>[![Version Badge][npm-version-svg]][package-url]</sup>
+# `eslint-plugin-vibe`
 
 Project specific linting rules for `eslint`
 
