@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/react": "^19.1.4",
-    "eslint-plugin-vibe": "file:../dist",
+    "eslint-plugin-vibeast": "file:../dist",
     "react": "^19.1.0"
   },
   "devDependencies": {

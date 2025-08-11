@@ -1,4 +1,4 @@
-# Require creating an `interface` or `type` for props (`eslint-plugin-vibe/no-object-literal-types`)
+# Require creating an `interface` or `type` for props (`eslint-plugin-vibeast/no-object-literal-types`)
 
 ## Rule Details
 

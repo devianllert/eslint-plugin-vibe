@@ -8,9 +8,9 @@ const plugin = { rules };
 
 export const configs = {
   recommended: {
-    name: "eslint-plugin-vibe/recommended",
-    plugins: { "eslint-plugin-vibe": plugin },
-    rules: { "eslint-plugin-vibe/no-object-literal-types": "error" },
+    name: "eslint-plugin-vibeast/recommended",
+    plugins: { "eslint-plugin-vibeast": plugin },
+    rules: { "eslint-plugin-vibeast/no-object-literal-types": "error" },
   },
 };
 

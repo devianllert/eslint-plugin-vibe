@@ -8,7 +8,7 @@ import { findComponentDeclaration, getComponentName } from "../lib/node";
 
 const createRule = ESLintUtils.RuleCreator(
   (name) =>
-    `https://github.com/devianllert/eslint-plugin-vibe/docs/rules${name}`,
+    `https://github.com/devianllert/eslint-plugin-vibeast/docs/rules${name}`,
 );
 
 type RuleOptions = [];

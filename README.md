@@ -1,11 +1,11 @@
-# `eslint-plugin-vibe`
+# `eslint-plugin-vibeast`
 
 Project specific linting rules for `eslint`
 
 ## Installation
 
 ```sh
-npm install eslint eslint-plugin-vibe --save-dev
+npm install eslint eslint-plugin-vibeast --save-dev
 ```
 
 
@@ -45,10 +45,10 @@ and the [official docs](https://eslint.org/docs/latest/user-guide/configuring/co
 
 ### Plugin
 
-The default export of `eslint-plugin-vibe` is a plugin object.
+The default export of `eslint-plugin-vibeast` is a plugin object.
 
 ```js
-const vibe = require('eslint-plugin-vibe');
+const vibe = require('eslint-plugin-vibeast');
 const globals = require('globals');
 
 module.exports = [
@@ -92,4 +92,4 @@ module.exports = [
 
 ## License
 
-`eslint-plugin-vibe` is licensed under the [MIT License](https://opensource.org/licenses/mit-license.php).
+`eslint-plugin-vibeast` is licensed under the [MIT License](https://opensource.org/licenses/mit-license.php).

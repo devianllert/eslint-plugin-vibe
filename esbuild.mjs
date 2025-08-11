@@ -36,7 +36,7 @@ writeFileSync(
       type: "commonjs",
       author: "devianllert (https://github.com/devianllert)",
       license: packageJSON.license,
-      repository: "github:devianllert/eslint-plugin-vibe",
+      repository: "github:devianllert/eslint-plugin-vibeast",
       main: "index.js",
       types: "index.d.ts",
       keywords: [

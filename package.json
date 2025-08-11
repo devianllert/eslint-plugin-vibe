@@ -1,5 +1,5 @@
 {
-  "name": "eslint-plugin-vibe",
+  "name": "eslint-plugin-vibeast",
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
@@ -10,7 +10,6 @@
     "prettier": "yarn prettier-ci --write",
     "prettier-ci": "prettier --ignore-path=.gitignore --check '**/*.{js,ts,json,md,yml}'"
   },
-  "prettier": {},
   "peerDependencies": {
     "eslint": ">=8.40"
   },
