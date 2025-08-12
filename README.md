@@ -35,7 +35,7 @@ In eslint `v8`, the legacy system (`.eslintrc*`) would still be supported, while
 And from [`v8.23.0`](https://github.com/eslint/eslint/releases/tag/v8.23.0), eslint CLI starts to look up `eslint.config.js`.
 **So, if your eslint is `>=8.23.0`, you're 100% ready to use the new config system.**
 
-and the [official docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new).
+[official docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new).
 
 ### Plugin
 
