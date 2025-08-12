@@ -35,12 +35,6 @@ In eslint `v8`, the legacy system (`.eslintrc*`) would still be supported, while
 And from [`v8.23.0`](https://github.com/eslint/eslint/releases/tag/v8.23.0), eslint CLI starts to look up `eslint.config.js`.
 **So, if your eslint is `>=8.23.0`, you're 100% ready to use the new config system.**
 
-You might want to check out the official blog posts,
-
-- <https://eslint.org/blog/2022/08/new-config-system-part-1/>
-- <https://eslint.org/blog/2022/08/new-config-system-part-2/>
-- <https://eslint.org/blog/2022/08/new-config-system-part-3/>
-
 and the [official docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new).
 
 ### Plugin
@@ -48,7 +42,7 @@ and the [official docs](https://eslint.org/docs/latest/user-guide/configuring/co
 The default export of `eslint-plugin-vibeast` is a plugin object.
 
 ```js
-const vibe = require('eslint-plugin-vibeast');
+const vibeast = require('eslint-plugin-vibeast');
 const globals = require('globals');
 
 module.exports = [
@@ -56,7 +50,7 @@ module.exports = [
   {
     files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
     plugins: {
-      vibe,
+      vibeast,
     },
     languageOptions: {
       parserOptions: {
@@ -87,7 +81,7 @@ module.exports = [
 
 | Name                                                                                         | Description                                                                                                                                  | 🔧 | 💡 | ❌  |
 | :------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------- | :- | :- | :- |
-| [no-object-literal-types](docs/rules/no-object-literal-types.md)                                     | Enforces creating an interface or type for props                                                                                                 |    |    |    |    |    |
+| [no-object-literal-types](docs/rules/no-object-literal-types.md)                                     | Enforces creating an interface or type for props                                                                                                 |  🔧  |    |    |    |    |
 
 
 ## License
